@@ -161,8 +161,12 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
 
 
                 for (DatenPflanze cn : pflanzen) {
-                    String log = "FundNr: " + cn.getFundpunktNr() + ", Datum: " + cn.getDatum() + ", Insel: " + cn.getInsel() + ", Lokalität: " + cn.getLokalitaet() + ", Km: " + cn.getKmFeld() + ", Habitat: " + cn.getHabitat() + ", Beobachter: " + cn.getBeobachter() + ", Taxon: " + cn.getTaxon() + ", Bezirk: " + cn.getBezirk() + ", Herbar: " + cn.getHerbar() + ", Kultur: "+ cn.getKulturNr() + ", Status: " + cn.getStatus() + ", Habitus: " + cn.getHabitus() + ", Anmerkungen: " + cn.getAnmerkungen();
-                    //+ ", Taxon: " + cn.getTaxon() + ", Bezirk: " + cn.getBezirk() + ", Herbar: " + cn.getHerbar();
+                    String log = "FundNr: " + cn.getFundpunktNr() + ", Datum: " + cn.getDatum() + ", Insel: " + cn.getInsel() +
+                            ", Lokalität: " + cn.getLokalitaet() + ", Km: " + cn.getKmFeld() + ", Habitat: " + cn.getHabitat() +
+                            ", Beobachter: " + cn.getBeobachter() + ", Taxon: " + cn.getTaxon() + ", Bezirk: " + cn.getBezirk() +
+                            ", Herbar: " + cn.getHerbar() + ", Kultur: "+ cn.getKulturNr() + ", Status: " + cn.getStatus() +
+                            ", Habitus: " + cn.getHabitus() + ", Anmerkungen: " + cn.getAnmerkungen();
+
                     // Writing flowers to log
                     Log.d("Name: ", log);
                 }

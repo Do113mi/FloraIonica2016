@@ -32,7 +32,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     //Interne Datebank ID
     private static final String KEY_ID = "id";      // 0
-
     private static final String KEY_FundpunktNr = "fundpunktNr";    // 1
     private static final String KEY_Taxon = "taxon";        // 2
     private static final String KEY_Datum = "datum";      // 3
@@ -40,7 +39,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_Lokalitaet = "lokalität";   // 5
     private static final String KEY_KmFeld = "kmFeld";  // 6
     private static final String KEY_Habitat = "habitat";    // 7
-    private static final String KEY_Beobachter = "beobachter";
+    private static final String KEY_Beobachter = "beobachter"; //8
     // Position fehlt noch
     private static final String KEY_Bezirk = "bezirk";
     private static final String KEY_Herbar = "Herbar";
@@ -187,14 +186,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 //Log.d("Test6", cursor.getString(6));
 
 
-                pflanze.setTaxon(cursor.getString(9));
-                pflanze.setBezirk(cursor.getString(10));
-                pflanze.setHerbar(cursor.getString(11));
-                //pflanze.setPalDat(cursor.getString(12));
-                //pflanze.setKulturNr(cursor.getString(13));
-                //pflanze.setStatus(cursor.getString(14));
-                //pflanze.setHabitus(cursor.getString(15));
-                //pflanze.setAnmerkungen(cursor.getString(16));
+                pflanze.setTaxon(cursor.getString(2));
+                pflanze.setBezirk(cursor.getString(9));
+                pflanze.setHerbar(cursor.getString(10));
+                pflanze.setPalDat(cursor.getString(11));
+                pflanze.setKulturNr(cursor.getString(12));
+                pflanze.setStatus(cursor.getString(13));
+                pflanze.setHabitus(cursor.getString(14));
+                pflanze.setAnmerkungen(cursor.getString(15));
 
                 // Adding flowers to list
                 pflanzenList.add(pflanze);
