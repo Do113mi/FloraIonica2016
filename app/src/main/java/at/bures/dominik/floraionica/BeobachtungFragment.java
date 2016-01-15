@@ -16,12 +16,7 @@ import java.util.List;
 
 public class BeobachtungFragment extends Fragment implements View.OnClickListener {
 
-    Button btnSpeichern2;
 
-    EditText textFund;
-    EditText textTaxon;
-    EditText textBezirk;
-    EditText textHerbar;
 
 
     @Nullable
@@ -30,12 +25,11 @@ public class BeobachtungFragment extends Fragment implements View.OnClickListene
 
         View view = inflater.inflate(R.layout.beobachtung_layout, container, false);
 
-        btnSpeichern2 = (Button) view.findViewById(R.id.btnSpeichern2);
-        btnSpeichern2.setOnClickListener(this);
 
-        textTaxon = (EditText) view.findViewById(R.id.editTextTaxon);
-        textBezirk = (EditText) view.findViewById(R.id.editTextBezirk);
-        textHerbar = (EditText) view.findViewById(R.id.editTextHerbar);
+
+
+        //textFund = (EditText) view.findViewById(R.id.editTextFundpunktNr);
+        //textFund = (EditText)getView().findViewById(R.id.editTextFundpunktNr); NULLPOIINTER
 
         //return inflater.inflate(R.layout.beobachtung_layout,null);
         return view;
@@ -50,33 +44,23 @@ public class BeobachtungFragment extends Fragment implements View.OnClickListene
         //Eingabefelder speichern:
 
 
-        DatabaseHandler db = new DatabaseHandler(getContext(), "PfDB", null, 1);
+        //Log.d("adfaf",neue.Fundp);
+
+
+        //DatabaseHandler db = new DatabaseHandler(getContext(), "PfDB", null, 1);
         //DatabaseHandler db = new DatabaseHandler(this);
 
-        Log.d("Insert2: ", "Inserting2 ..");
+        //Log.d("Insert2: ", neue.Fundpunkt.toString());
 
 
-        db.updateFlower(new DatenPflanze(null, null, null, null, null, null, null, textTaxon.getText().toString(), textBezirk.getText().toString(), textHerbar.getText().toString(), null, null, null, null, null));
+        //db.updateFlower(new DatenPflanze(null, null, null, null, null, null, null, textTaxon.getText().toString(), textBezirk.getText().toString(), textHerbar.getText().toString(), null, null, null, null, null));
 
         //db.addFlower(new DatenPflanze(null, null, null, null, null, null, null, textTaxon.getText().toString(), textBezirk.getText().toString(), textHerbar.getText().toString(), null, null, null, null, null));
 
         //Log.d("Fundpunkt: ", textFundpunktNr.getText().toString());
 
         // Reading all flowers
-        Log.d("Reading2: ", "Reading all flowers2..");
-        List<DatenPflanze> pflanzen = db.getAllFlowers();
 
-        //GEHT auch oida
-        //Log.d("Delete id 4: ", "bla");
-        //db.deleteByID(4);
-
-
-        for (DatenPflanze cn : pflanzen) {
-            String log =  "FundNr: " + cn.getFundpunktNr() + ", Datum: " + cn.getDatum() + ", Insel: " + cn.getInsel() + ", Lokalität: " + cn.getLokalitaet() + ", Km: " + cn.getKmFeld() + ", Habitat: " + cn.getHabitat() + ", Beobachter: " + cn.getBeobachter() + ", +++ Taxon: " + cn.getTaxon() + ", Bezirk: " + cn.getBezirk() + ", Herbar: " + cn.getHerbar();
-
-            // Writing flowers to log
-            Log.d("Name: ", log);
-        }
     }
 
     private void showToastMessage(String msg) {

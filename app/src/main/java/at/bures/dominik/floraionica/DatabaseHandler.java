@@ -116,14 +116,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         // 2. Tab BEOBACHTUNGEN Eingabe:
 
-        //values.put(KEY_Taxon, pflanze.getTaxon());
-        //values.put(KEY_Bezirk, pflanze.getBezirk());
-        //values.put(KEY_Herbar, pflanze.getHerbar());
-        //values.put(KEY_PalDat, pflanze.getPalDat());
-        //values.put(KEY_KulturNr, pflanze.getKulturNr());
-        //values.put(KEY_Status, pflanze.getStatus());
-        //values.put(KEY_Habitus, pflanze.getHabitus());
-        //values.put(KEY_Anmerkungen, pflanze.getAnmerkungen());
+        values.put(KEY_Taxon, pflanze.getTaxon());
+        values.put(KEY_Bezirk, pflanze.getBezirk());
+        values.put(KEY_Herbar, pflanze.getHerbar());
+        values.put(KEY_PalDat, pflanze.getPalDat());
+        values.put(KEY_KulturNr, pflanze.getKulturNr());
+        values.put(KEY_Status, pflanze.getStatus());
+        values.put(KEY_Habitus, pflanze.getHabitus());
+        values.put(KEY_Anmerkungen, pflanze.getAnmerkungen());
 
         // Inserting Row
         db.insert(TABLE_Pflanzentable, null, values);
