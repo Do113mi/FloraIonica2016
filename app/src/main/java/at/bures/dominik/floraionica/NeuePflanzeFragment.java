@@ -26,15 +26,30 @@ import java.util.List;
 
 public class NeuePflanzeFragment extends Fragment implements View.OnClickListener {
 
-    Button btnspeichern;
+    //Button btnspeichern;
     Button btnfoto;
     EditText textFundpunktNr;
+    String Fundpunkt;
     //Datum
     Spinner spinnerInsel;
     EditText textLokalitaet;
     EditText textKmFeld;
     EditText textHabitat;
     EditText textBeobachter;
+
+
+
+
+    Button btnSpeichern2;
+
+    EditText textFund;
+    EditText textTaxon;
+    EditText textBezirk;
+    EditText textHerbar;
+    EditText textKultur;
+    Spinner spinnerstatus;
+    EditText textHabitus;
+    EditText textAnmerkungen;
 
 
     @Nullable
@@ -44,10 +59,19 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
 
         View view = inflater.inflate(R.layout.neuepflanze_layout, container, false);
 
-        btnspeichern = (Button) view.findViewById(R.id.btnspeichern);
-        btnspeichern.setOnClickListener(this);
+
+        //btnspeichern.setOnClickListener(this);
         btnfoto = (Button) view.findViewById(R.id.btnfoto);
         btnfoto.setOnClickListener(this);
+
+
+        btnSpeichern2 = (Button) view.findViewById(R.id.btnSpeichern2);
+        btnSpeichern2.setOnClickListener(this);
+
+        textTaxon = (EditText) view.findViewById(R.id.editTextTaxon);
+        textBezirk = (EditText) view.findViewById(R.id.editTextBezirk);
+        textHerbar = (EditText) view.findViewById(R.id.editTextHerbar);
+
 
 
         textFundpunktNr = (EditText) view.findViewById(R.id.editTextFundpunktNr);
@@ -56,6 +80,10 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
         textKmFeld = (EditText) view.findViewById(R.id.editTextKoordinaten);
         textHabitat = (EditText) view.findViewById(R.id.editTextHabitat);
         textBeobachter = (EditText) view.findViewById(R.id.editTextBeobachter);
+        textKultur = (EditText) view.findViewById(R.id.editTextKulturNr);
+        textHabitus = (EditText) view.findViewById(R.id.editTextHabitus);
+        textAnmerkungen = (EditText) view.findViewById(R.id.editTextAnmerkungen);
+        spinnerstatus = (Spinner) view.findViewById(R.id.spinnerStatus);
 
 
         return view;
@@ -85,10 +113,10 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
 
 
         switch (v.getId()) {
-            case R.id.btnspeichern: {
+            case R.id.btnSpeichern2: {
 
                 //Eingabefelder speichern:
-
+                Fundpunkt = textFundpunktNr.getText().toString();
                 Toast.makeText(this.getActivity(), "oh baby", Toast.LENGTH_LONG).show();
 
                 DatabaseHandler db = new DatabaseHandler(getContext(), "PfDB", null, 1);
@@ -99,13 +127,27 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
                  * */
                 // Inserting flowers
 
-                Log.d("Insert: ", "Inserting ..");
+                Log.d("Insert: ", Fundpunkt.toString());
                 //db.addFlower(new DatenPflanze("Ilyas", null, "Insel", null, null, null, null, null, null, null, null, null, null, null, null)); //15 Para
 
                 //db.addFlower(new DatenPflanze(.getFundpunktNr(), R.id.textViewDate, "Wien", "blabla", "100", "trocken", "jemand", "taxon1wtf", "Bezirk", "herbar", "Paldat", "kultNr", "status", "habitus", "anmerk"));
 
 
-                db.addFlower(new DatenPflanze(textFundpunktNr.getText().toString(), null, spinnerInsel.getSelectedItem().toString(), textLokalitaet.getText().toString(), textKmFeld.getText().toString(), textHabitat.getText().toString(), textBeobachter.getText().toString(), null, null, null, null, null, null, null, null));
+                db.addFlower(new DatenPflanze(textFundpunktNr.getText().toString(),
+                        null,
+                        spinnerInsel.getSelectedItem().toString(),
+                        textLokalitaet.getText().toString(),
+                        textKmFeld.getText().toString(),
+                        textHabitat.getText().toString(),
+                        textBeobachter.getText().toString(),
+                        textTaxon.getText().toString(),
+                        textBezirk.getText().toString(),
+                        textHerbar.getText().toString(),
+                        null,
+                        textKultur.getText().toString(),
+                        spinnerInsel.getSelectedItem().toString(),
+                        textHabitus.getText().toString(),
+                        textAnmerkungen.getText().toString()));
 
                 //Log.d("Fundpunkt: ", textFundpunktNr.getText().toString());
 
@@ -119,7 +161,7 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
 
 
                 for (DatenPflanze cn : pflanzen) {
-                    String log = "FundNr: " + cn.getFundpunktNr() + ", Datum: " + cn.getDatum() + ", Insel: " + cn.getInsel() + ", Lokalität: " + cn.getLokalitaet() + ", Km: " + cn.getKmFeld() + ", Habitat: " + cn.getHabitat() + ", Beobachter: " + cn.getBeobachter() + ", Taxon: " + cn.getTaxon();
+                    String log = "FundNr: " + cn.getFundpunktNr() + ", Datum: " + cn.getDatum() + ", Insel: " + cn.getInsel() + ", Lokalität: " + cn.getLokalitaet() + ", Km: " + cn.getKmFeld() + ", Habitat: " + cn.getHabitat() + ", Beobachter: " + cn.getBeobachter() + ", Taxon: " + cn.getTaxon() + ", Bezirk: " + cn.getBezirk() + ", Herbar: " + cn.getHerbar() + ", Kultur: "+ cn.getKulturNr() + ", Status: " + cn.getStatus() + ", Habitus: " + cn.getHabitus() + ", Anmerkungen: " + cn.getAnmerkungen();
                     //+ ", Taxon: " + cn.getTaxon() + ", Bezirk: " + cn.getBezirk() + ", Herbar: " + cn.getHerbar();
                     // Writing flowers to log
                     Log.d("Name: ", log);
