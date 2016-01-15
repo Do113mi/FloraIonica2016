@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item android:title="Neue Pflanze"
+          android:id="@+id/nav_item_neue"
+          android:icon="@android:drawable/ic_menu_camera"/>
+
+    <item android:title="Meine Pflanzen"
+          android:id="@+id/nav_item_meine"
+          android:icon="@android:drawable/ic_menu_gallery"/>
+
+    <item android:title="Login"
+          android:id="@+id/nav_item_login"
+          android:icon="@android:drawable/ic_lock_idle_lock"/>
+
+
+
+    <item android:title="Sonstiges">
+        <menu>
+            <item
+                android:title="Einstellungen"
+                android:id="@+id/nav_item_einstellungen"
+                android:icon="@android:drawable/ic_menu_manage"/>
+            <item
+                android:title="Über uns - Löschen"
+                android:id="@+id/nav_item_wir"
+                android:icon="@android:drawable/ic_menu_help"/>
+        </menu>
+    </item>
+
+
+
+
+</menu>
