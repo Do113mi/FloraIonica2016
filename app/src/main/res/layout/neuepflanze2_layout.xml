@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NeuePflanzeFragment2"
+    android:fillViewport="false">
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <!-- Row 1 with 2 columns -->
+
+
+        <!-- Row 1 with 2 columns -->
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/textviewBezirk"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Bezirk: "
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/CodeFont"/>
+
+            <EditText
+                android:id="@+id/editTextBez"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Innere Stadt" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_horizontal">
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_column="3"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="Herbar"
+                style="@style/CodeFont"/>
+
+            <EditText
+                android:id="@+id/editTextHerbar"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Nr 123456" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_horizontal">
+
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_column="3"
+                android:layout_weight="1"
+                android:text="PalDat"
+                style="@style/CodeFont"/>
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_horizontal">
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_column="3"
+                android:layout_weight="1"
+                android:text="KulturNr"
+                style="@style/CodeFont"/>
+
+            <EditText
+                android:id="@+id/editTextKulturNr"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Nr 123456" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Status: "
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/CodeFont"/>
+
+            <Spinner
+                android:id="@+id/spinnerStatus"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/testdrop"
+                android:prompt="@string/testdrop" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Habitus: "
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/CodeFont"/>
+
+            <EditText
+                android:id="@+id/editTextHabitus"
+
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="blühend,..." />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Anmerkungen: "
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/CodeFont"/>
+
+            <EditText
+                android:id="@+id/editTextAnmerkungen"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="textMultiLine"
+                android:lines="4"
+                android:maxLines="5"
+                android:minLines="1"
+                android:scrollbars="vertical" />
+
+        </TableRow>
+
+        <Button
+            android:id="@+id/btnSpeichern3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignEnd="@+id/editText3"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/editText3"
+            android:clickable="true"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#689F38"
+            android:text="Speichern" />
+
+    </TableLayout>
+
+
+</ScrollView>

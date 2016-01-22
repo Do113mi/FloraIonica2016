@@ -23,10 +23,7 @@
                 android:title="Einstellungen"
                 android:id="@+id/nav_item_einstellungen"
                 android:icon="@android:drawable/ic_menu_manage"/>
-            <item
-                android:title="Über uns - Löschen"
-                android:id="@+id/nav_item_wir"
-                android:icon="@android:drawable/ic_menu_help"/>
+
         </menu>
     </item>
 

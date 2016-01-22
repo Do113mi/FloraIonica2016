@@ -1,5 +1,7 @@
 package at.bures.dominik.floraionica;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -20,37 +22,26 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileDescriptor;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 
 public class NeuePflanzeFragment extends Fragment implements View.OnClickListener {
 
-    //Button btnspeichern;
-    Button btnfoto;
+
     EditText textFundpunktNr;
     String Fundpunkt;
     //Datum
     Spinner spinnerInsel;
-    EditText textLokalitaet;
     EditText textKmFeld;
+    EditText textLokalitaet;
     EditText textHabitat;
     EditText textBeobachter;
 
-
-
-
     Button btnSpeichern2;
-
-    EditText textFund;
-    EditText textTaxon;
-    EditText textBezirk;
-    EditText textHerbar;
-    EditText textKultur;
-    Spinner spinnerstatus;
-    EditText textHabitus;
-    EditText textAnmerkungen;
-
+    Button btnWeiter;
 
     @Nullable
     @Override
@@ -60,17 +51,13 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
         View view = inflater.inflate(R.layout.neuepflanze_layout, container, false);
 
 
-        //btnspeichern.setOnClickListener(this);
-        btnfoto = (Button) view.findViewById(R.id.btnfoto);
-        btnfoto.setOnClickListener(this);
 
 
         btnSpeichern2 = (Button) view.findViewById(R.id.btnSpeichern2);
         btnSpeichern2.setOnClickListener(this);
 
-        textTaxon = (EditText) view.findViewById(R.id.editTextTaxon);
-        textBezirk = (EditText) view.findViewById(R.id.editTextBezirk);
-        textHerbar = (EditText) view.findViewById(R.id.editTextHerbar);
+        btnWeiter = (Button) view.findViewById(R.id.btnWeiter);
+        btnWeiter.setOnClickListener(this);
 
 
 
@@ -80,25 +67,14 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
         textKmFeld = (EditText) view.findViewById(R.id.editTextKoordinaten);
         textHabitat = (EditText) view.findViewById(R.id.editTextHabitat);
         textBeobachter = (EditText) view.findViewById(R.id.editTextBeobachter);
-        textKultur = (EditText) view.findViewById(R.id.editTextKulturNr);
-        textHabitus = (EditText) view.findViewById(R.id.editTextHabitus);
-        textAnmerkungen = (EditText) view.findViewById(R.id.editTextAnmerkungen);
-        spinnerstatus = (Spinner) view.findViewById(R.id.spinnerStatus);
-
-
-        return view;
-
-        // Get a reference to the AutoCompleteTextView in the layout
-        //AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autocomplete_beobachter);
-        // Get the string array
-        //String[] beobachter = getResources().getStringArray(R.array.beobachter_array);
-        // Create the adapter and set it to the AutoCompleteTextView
         //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, beobachter);
         //textView.setAdapter(adapter);
+        return view;
 
 
     }
 
+    /**
     private void showToastMessage(String msg) {
 
         //Toast toast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
@@ -106,6 +82,7 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
 
         toast1.show();
     }
+     */
 
 
     @Override
@@ -140,14 +117,14 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
                         textKmFeld.getText().toString(),
                         textHabitat.getText().toString(),
                         textBeobachter.getText().toString(),
-                        textTaxon.getText().toString(),
-                        textBezirk.getText().toString(),
-                        textHerbar.getText().toString(),
                         null,
-                        textKultur.getText().toString(),
+                        null,
+                        null,
+                        null,
+                        null,
                         spinnerInsel.getSelectedItem().toString(),
-                        textHabitus.getText().toString(),
-                        textAnmerkungen.getText().toString()));
+                        null,
+                        null));
 
                 //Log.d("Fundpunkt: ", textFundpunktNr.getText().toString());
 
@@ -162,7 +139,7 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
 
                 for (DatenPflanze cn : pflanzen) {
                     String log = "FundNr: " + cn.getFundpunktNr() + ", Datum: " + cn.getDatum() + ", Insel: " + cn.getInsel() +
-                            ", Lokalität: " + cn.getLokalitaet() + ", Km: " + cn.getKmFeld() + ", Habitat: " + cn.getHabitat() +
+                            ", Km: " + cn.getKmFeld() + ", Lokalität: " + cn.getLokalitaet() + ", Habitat: " + cn.getHabitat() +
                             ", Beobachter: " + cn.getBeobachter() + ", Taxon: " + cn.getTaxon() + ", Bezirk: " + cn.getBezirk() +
                             ", Herbar: " + cn.getHerbar() + ", Kultur: "+ cn.getKulturNr() + ", Status: " + cn.getStatus() +
                             ", Habitus: " + cn.getHabitus() + ", Anmerkungen: " + cn.getAnmerkungen();
@@ -171,13 +148,30 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
                     Log.d("Name: ", log);
                 }
 
+
+
                 break;
             }
 
-            case R.id.btnfoto: {
+            case R.id.btnWeiter: {
 
-                Intent intent = new Intent(getActivity(), ImageActivity.class);
+
+                Intent intent = new Intent(getActivity(), NeuePflanzeFragment2.class);
+                intent.putExtra("fundNr", textFundpunktNr.getText().toString());
+                intent.putExtra("Insel", spinnerInsel.getSelectedItem().toString());
+                intent.putExtra("Km", textKmFeld.getText().toString());
+                intent.putExtra("Lokalität", textLokalitaet.getText().toString());
+                intent.putExtra("Habitat", textHabitat.getText().toString());
+                intent.putExtra("Beobachter", textBeobachter.getText().toString());
+
                 startActivity(intent);
+
+
+                /*
+                Fragment mFragment = new NeuePflanzeFragment2();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.containerView, mFragment).commit();
+                */
+
 
 
             }
@@ -186,10 +180,10 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
         }
 
 
-        //.... etc
+
     }
 
 
 }
-    
+
 

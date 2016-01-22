@@ -1,10 +1,21 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="AppTheme2" parent="Theme.AppCompat.Light.Dialog">
+
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+
+    </style>
+
+    <!-- The platform's desired minimum size for a dialog's width when it
+        is along the major axis (that is the screen is landscape).  This may
+        be either a fraction or a dimension. -->
+    <item type="dimen" name="dialog_min_width_major">65%</item>
 </resources>

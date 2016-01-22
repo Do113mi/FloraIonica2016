@@ -25,7 +25,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="FundpunkNr:"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/CodeFont"/>
 
             <EditText
                 android:id="@+id/editTextFundpunktNr"
@@ -51,7 +52,8 @@
 
 
                 android:text="Datum: "
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/CodeFont"/>
 
             <TextView
                 android:id="@+id/textViewDate"
@@ -78,7 +80,8 @@
 
                 android:layout_weight="1"
                 android:text="Insel: "
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/CodeFont"/>
 
             <Spinner
                 android:id="@+id/spinnerInsel"
@@ -104,7 +107,8 @@
                 android:layout_weight="1"
 
                 android:text="Km-Feld: "
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/CodeFont"/>
 
             <EditText
                 android:id="@+id/editTextKoordinaten"
@@ -130,7 +134,8 @@
 
                 android:layout_weight="1"
                 android:text="Lokalität: "
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/CodeFont"/>
 
             <EditText
                 android:id="@+id/editTextLokalitaet"
@@ -160,7 +165,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Habitat"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/CodeFont"/>
 
             <EditText
                 android:id="@+id/editTextHabitat"
@@ -186,13 +192,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="BeobachterInnen: "
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-
-            <AutoCompleteTextView xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/autocomplete_beobachter"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/CodeFont"/>
 
             <EditText
                 android:id="@+id/editTextBeobachter"
@@ -210,16 +211,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:gravity="center_horizontal">
-
-        <Button
-            android:id="@+id/btnfoto"
-            android:layout_weight="1"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:text="Foto" />
-
-
-
         </TableRow>
 
 
@@ -239,7 +230,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.7"
                 android:text="Position: "
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/CodeFont"/>
 
             <TextView
                 android:id="@+id/textViewGenauigkeit"
@@ -281,7 +273,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Taxon: "
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/CodeFont"/>
 
             <EditText
                 android:id="@+id/editTextTaxon"
@@ -292,185 +285,45 @@
 
         </TableRow>
 
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="end">
+
+
+
         <Button
             android:id="@+id/btnSpeichern2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
 
             android:layout_alignEnd="@+id/editText3"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignRight="@+id/editText3"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#689F38"
             android:text="Speichern" />
 
-        <TableRow
-            android:layout_width="fill_parent"
+        <Button
+            android:id="@+id/btnWeiter"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_horizontal">
+            android:layout_weight="1"
 
+            android:layout_alignEnd="@+id/editText3"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignRight="@+id/editText3"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#689F38"
 
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Bezirk: "
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <EditText
-                android:id="@+id/editTextBezirk"
-
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Innere Stadt" />
-
+            android:text="Optional" />
         </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_horizontal">
-
-            <CheckBox
-                android:id="@+id/checkBox"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_column="3"
-                android:layout_weight="1"
-                android:checked="true"
-                android:text="Herbar" />
-
-            <EditText
-                android:id="@+id/editTextHerbar"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Nr 123456" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_horizontal">
-
-            <CheckBox
-                android:id="@+id/checkBox1"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_column="3"
-                android:layout_weight="1"
-                android:text="PalDat" />
-
-            <EditText
-                android:id="@+id/editTextPalDat"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="nur Checkbox" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_horizontal">
-
-            <CheckBox
-                android:id="@+id/checkBox2"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_column="3"
-                android:layout_weight="1"
-                android:text="KulturNr" />
-
-            <EditText
-                android:id="@+id/editTextKulturNr"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Nr 123456" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_horizontal">
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Status: "
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <Spinner
-                android:id="@+id/spinnerStatus"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:entries="@array/testdrop"
-                android:prompt="@string/testdrop" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_horizontal">
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Habitus: "
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <EditText
-                android:id="@+id/editTextHabitus"
-
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="blühend,..." />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:gravity="center_horizontal">
-
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Anmerkungen: "
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <EditText
-                android:id="@+id/editTextAnmerkungen"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:inputType="textMultiLine"
-                android:lines="4"
-                android:maxLines="5"
-                android:minLines="1"
-                android:scrollbars="vertical" />
-
-        </TableRow>
-
     </TableLayout>
 
 

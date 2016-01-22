@@ -108,5 +108,10 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
 
+    <string name="fontFamily__roboto_thin">sans-serif-thin</string>
+    <string name="fontFamily__roboto_medium">sans-serif-medium</string>
+    <string name="fontFamily__roboto_black">sans-serif-black</string>
+    <string name="fontFamily__roboto_condensed_light">sans-serif-condensed-light</string>
+
 
 </resources>
