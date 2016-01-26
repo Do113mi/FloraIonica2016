@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -49,9 +52,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_Habitus = "habitus";
     private static final String KEY_Anmerkungen = "anmerkungen";
 
+
+    private static String databasePath = "";
+    private static final String DB_PATH = "/data/data/at.bures.dominik.floraionica/databases/flowerpower.db";
+
     public DatabaseHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
+
+        databasePath = context.getDatabasePath(DATABASE_NAME).getPath();
     }
+
+
 
     /*  onCreate:
     *
@@ -277,4 +288,50 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return cursor.getCount();
     }
 
+    public JSONArray getResults() { //private
+
+
+
+        String myPath = databasePath;// Set path to your database
+        //String myPath = DB_PATH;// Set path to your database
+
+
+        String myTable = TABLE_Pflanzentable;//Set name of your table
+
+        //SQLiteDatabase myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String searchQuery = "SELECT  * FROM " + myTable;
+        Cursor cursor = db.rawQuery(searchQuery, null);
+
+        JSONArray resultSet = new JSONArray();
+
+        cursor.moveToFirst();
+        while (cursor.isAfterLast() == false) {
+
+            int totalColumn = cursor.getColumnCount();
+            JSONObject rowObject = new JSONObject();
+
+            for (int i = 0; i < totalColumn; i++) {
+                if (cursor.getColumnName(i) != null) {
+                    try {
+                        if (cursor.getString(i) != null) {
+                            //Log.d("TAG_NAME", cursor.getString(i));
+                            rowObject.put(cursor.getColumnName(i), cursor.getString(i));
+                        } else {
+                            rowObject.put(cursor.getColumnName(i), "");
+                        }
+                    } catch (Exception e) {
+                        Log.d("TAG_NAME", e.getMessage());
+                    }
+                }
+            }
+            resultSet.put(rowObject);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        Log.d("TAG_NAME", resultSet.toString());
+        return resultSet;
+    }
 }
