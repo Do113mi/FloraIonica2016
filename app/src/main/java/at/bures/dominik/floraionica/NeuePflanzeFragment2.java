@@ -34,16 +34,17 @@ public class NeuePflanzeFragment2 extends Activity {
     EditText textHabitus;
     EditText textAnmerkungen;
     static String fundNr;
-
-
-    @Nullable
+    static String insel;
+    static String km;
+    static String lokalität;
+    static String habitat;
+    static String beobachter;
 
     protected void onCreate(Bundle savedInstanceState) {
         //return inflater.inflate(R.layout.neuepflanze_layout, null);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.neuepflanze2_layout);
-        String insel, km, lokalität, habitat, beobachter;
         if(savedInstanceState==null) {
             Bundle extras = getIntent().getExtras();
             if (extras == null) {
@@ -55,11 +56,21 @@ public class NeuePflanzeFragment2 extends Activity {
                 beobachter = null;
             } else {
                 fundNr = extras.getString("fundNr");
+                insel = extras.getString("Insel");
+                km = extras.getString("Km");
+                lokalität = extras.getString("Lokalität");
+                habitat= extras.getString("Habität");
+                beobachter= extras.getString("Beobachter");
             }
         }
             else
             {
                 fundNr=(String) savedInstanceState.getSerializable("fundNr");
+                insel=(String) savedInstanceState.getSerializable("Insel");
+                km=(String) savedInstanceState.getSerializable("Km");
+                lokalität=(String) savedInstanceState.getSerializable("Lokalität");
+                habitat=(String) savedInstanceState.getSerializable("Habität");
+                beobachter=(String) savedInstanceState.getSerializable("Beobachter");
             }
 
                 /*
@@ -107,11 +118,11 @@ public class NeuePflanzeFragment2 extends Activity {
 
         db.addFlower(new DatenPflanze(fundNr,
                 null,
-                null,
-                null,
-                null,
-                null,
-                null,
+                insel,
+                km,
+                lokalität,
+                habitat,
+                beobachter,
                 null,
                 textBezirk.getText().toString(),
                 textHerbar.getText().toString(),

@@ -12,12 +12,16 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Datei auswählen"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#689F38"
         android:id="@+id/buttonChoose" />
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Foto aufnehmen"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#689F38"
         android:id="@+id/buttonTake" />
 
     <ImageView
@@ -31,6 +35,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Foto hochladen/speichern"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#689F38"
         android:id="@+id/buttonUpload" />
 
 

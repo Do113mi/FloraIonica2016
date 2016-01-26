@@ -40,8 +40,10 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
     EditText textHabitat;
     EditText textBeobachter;
 
+    Button btnFoto;
     Button btnSpeichern2;
     Button btnWeiter;
+
 
     @Nullable
     @Override
@@ -52,6 +54,8 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
 
 
 
+        btnFoto = (Button) view.findViewById(R.id.btnFoto);
+        btnFoto.setOnClickListener(this);
 
         btnSpeichern2 = (Button) view.findViewById(R.id.btnSpeichern2);
         btnSpeichern2.setOnClickListener(this);
@@ -177,6 +181,12 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
             }
 
             break;
+
+            case R.id.btnFoto:
+                Intent intent = new Intent(getActivity(), ImageActivity.class);
+                startActivity(intent);
+
+
         }
 
 
