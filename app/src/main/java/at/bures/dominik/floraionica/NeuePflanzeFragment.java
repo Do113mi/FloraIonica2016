@@ -1,14 +1,19 @@
 package at.bures.dominik.floraionica;
 
+import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,10 +26,27 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.plus.model.people.Person;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileDescriptor;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URLConnection;
 import java.util.List;
 
 
@@ -44,6 +66,7 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
     Button btnSpeichern2;
     Button btnWeiter;
 
+    Context context;
 
     @Nullable
     @Override
@@ -89,6 +112,108 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
      */
 
 
+    public static String POST(String url, DatenPflanze pflanze){
+        InputStream inputStream = null;
+        String result = "";
+        try {
+
+            // 1. create HttpClient
+
+
+
+
+            HttpClient httpclient = new DefaultHttpClient();
+
+            // 2. make POST request to the given URL
+            HttpPost httpPost = new HttpPost(url);
+
+            String json = "";
+
+            // 3. build jsonObject
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.accumulate("FundpunktNr", pflanze.getFundpunktNr());
+            jsonObject.accumulate("Insel", pflanze.getInsel());
+            jsonObject.accumulate("Km-Feld", pflanze.getKmFeld());
+
+            // 4. convert JSONObject to JSON to String
+            json = jsonObject.toString();
+
+            // ** Alternative way to convert Person object to JSON string usin Jackson Lib
+            // ObjectMapper mapper = new ObjectMapper();
+            // json = mapper.writeValueAsString(person);
+
+            // 5. set json to StringEntity
+            StringEntity se = new StringEntity(json);
+
+            // 6. set httpPost Entity
+            httpPost.setEntity(se);
+
+            // 7. Set some headers to inform server about the type of the content
+            httpPost.setHeader("Accept", "application/json");
+            httpPost.setHeader("Content-type", "application/json");
+
+            // 8. Execute POST request to the given URL
+            HttpResponse httpResponse = httpclient.execute(httpPost);
+
+            // 9. receive response as inputStream
+            inputStream = httpResponse.getEntity().getContent();
+
+            // 10. convert inputstream to string
+            if(inputStream != null)
+                result = convertInputStreamToString(inputStream);
+            else
+                result = "Did not work!";
+
+        } catch (Exception e) {
+            Log.d("InputStream", e.getLocalizedMessage());
+        }
+
+        // 11. return result
+        return result;
+    }
+
+    //public boolean isConnected(){
+    //    ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+    //    NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+    //    if (networkInfo != null && networkInfo.isConnected())
+    //        return true;
+    //    else
+    //        return false;
+    //}
+
+    private static String convertInputStreamToString(InputStream inputStream) throws IOException{
+        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
+        String line = "";
+        String result = "";
+        while((line = bufferedReader.readLine()) != null)
+            result += line;
+
+        inputStream.close();
+        return result;
+
+    }
+
+
+    private class HttpAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+
+            DatenPflanze pflanze = new DatenPflanze();
+
+            //pflanze.setFundpunktNr(textFundpunktNr.getText().toString());
+            //pflanze.setInsel(spinnerInsel.getSelectedItem().toString());
+            //pflanze.setKmFeld(textKmFeld.getText().toString());
+
+            return POST(urls[0],pflanze);
+        }
+        // onPostExecute displays the results of the AsyncTask.
+        @Override
+        protected void onPostExecute(String result) {
+            //Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
+        }
+    }
+
+
     @Override
     public void onClick(View v) {
 
@@ -100,7 +225,9 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
                 Fundpunkt = textFundpunktNr.getText().toString();
                 Toast.makeText(this.getActivity(), "oh baby", Toast.LENGTH_LONG).show();
 
-                DatabaseHandler db = new DatabaseHandler(getContext(), "PfDB", null, 1);
+                DatabaseHandler db = new DatabaseHandler(getActivity(), "PfDB", null, 1);
+                // nicht null getContext()
+
                 //DatabaseHandler db = new DatabaseHandler(this);
 
                 /**
@@ -183,7 +310,11 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
             break;
 
             case R.id.btnFoto:
-                Intent intent = new Intent(getActivity(), ImageActivity.class);
+                //Intent intent = new Intent(getActivity(), ImageActivity.class);
+                //startActivity(intent);
+
+
+                Intent intent = new Intent(getActivity(), Sync.class);
                 startActivity(intent);
 
 
