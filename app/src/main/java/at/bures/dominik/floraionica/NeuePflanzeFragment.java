@@ -61,12 +61,14 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
     EditText textLokalitaet;
     EditText textHabitat;
     EditText textBeobachter;
+    EditText textTaxon;
 
     Button btnFoto;
     Button btnSpeichern2;
     Button btnWeiter;
 
     Context context;
+
 
     @Nullable
     @Override
@@ -94,8 +96,13 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
         textKmFeld = (EditText) view.findViewById(R.id.editTextKoordinaten);
         textHabitat = (EditText) view.findViewById(R.id.editTextHabitat);
         textBeobachter = (EditText) view.findViewById(R.id.editTextBeobachter);
+        textTaxon = (EditText) view.findViewById(R.id.editTextTaxon);
         //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, beobachter);
         //textView.setAdapter(adapter);
+
+
+
+
         return view;
 
 
@@ -218,8 +225,13 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
     public void onClick(View v) {
 
 
+
+
         switch (v.getId()) {
             case R.id.btnSpeichern2: {
+
+
+
 
                 //Eingabefelder speichern:
                 Fundpunkt = textFundpunktNr.getText().toString();
@@ -248,7 +260,7 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
                         textKmFeld.getText().toString(),
                         textHabitat.getText().toString(),
                         textBeobachter.getText().toString(),
-                        null,
+                        textTaxon.getText().toString(),
                         null,
                         null,
                         null,
@@ -280,6 +292,12 @@ public class NeuePflanzeFragment extends Fragment implements View.OnClickListene
                 }
 
 
+
+                textFundpunktNr.setText("");
+                textTaxon.setText("");
+
+                //((EditText) view.findViewById(R.id.editTextFundpunktNr)).setText("");
+                //((EditText) view.findViewById(R.id.editTextTaxon)).setText("");
 
                 break;
             }
