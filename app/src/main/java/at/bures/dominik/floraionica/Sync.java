@@ -30,6 +30,7 @@ public class Sync extends Activity implements OnClickListener {
     TextView tvIsConnected;
     static EditText etName,etCountry,etTwitter;
     Button btnPost;
+    static String json;
 
     Person person;
     @Override
@@ -70,7 +71,7 @@ public class Sync extends Activity implements OnClickListener {
             // 2. make POST request to the given URL
             HttpPost httpPost = new HttpPost(url);
 
-            String json = "";
+            json = "";
 
 
             // 3. build jsonObject
@@ -82,7 +83,6 @@ public class Sync extends Activity implements OnClickListener {
 
             // 4. convert JSONObject to JSON to String
             json = jsonObject.toString();
-
 
             // ** Alternative way to convert Person object to JSON string usin Jackson Lib
             // ObjectMapper mapper = new ObjectMapper();
@@ -162,6 +162,9 @@ public class Sync extends Activity implements OnClickListener {
         @Override
         protected void onPostExecute(String result) {
             Toast.makeText(getBaseContext(), "Data Sent!", Toast.LENGTH_LONG).show();
+
+            Toast.makeText(getApplicationContext(), json, Toast.LENGTH_LONG).show();
+            System.out.println(json);
         }
     }
 
